@@ -128,6 +128,28 @@ function shakeElement(element) {
     setTimeout(() => element.classList.remove('shake'), 500);
 }
 
+function createImageParticle(x, y) {
+    const particle = document.createElement('img');
+    particle.src = 'assets/image.png';
+    particle.className = 'image-particle';
+    
+    // Random end position with larger distance
+    const angle = Math.random() * Math.PI * 2;
+    const distance = 200 + Math.random() * 300; // Increased distance
+    const endX = Math.cos(angle) * distance;
+    const endY = Math.sin(angle) * distance;
+    
+    particle.style.setProperty('--end-x', `${endX}px`);
+    particle.style.setProperty('--end-y', `${endY}px`);
+    
+    particle.style.left = `${x}px`;
+    particle.style.top = `${y}px`;
+    
+    document.body.appendChild(particle);
+    
+    setTimeout(() => particle.remove(), 2500); // Match with animation duration
+}
+
 function showResult(result, text) {
     result.textContent = text;
     result.classList.add('show');
@@ -137,6 +159,10 @@ function showResult(result, text) {
     function createNextConfetti() {
         if (created < MAX_CONFETTI) {
             createConfetti();
+            // Add image particles
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+            createImageParticle(x, y);
             created++;
             requestAnimationFrame(createNextConfetti);
         }

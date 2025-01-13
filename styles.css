@@ -422,3 +422,29 @@ button:disabled {
     100% { transform: scale(1); }
 }
 
+.image-particle {
+    position: fixed;
+    pointer-events: none;
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    opacity: 0.9;
+    z-index: 1000;
+    animation: particle-animation 2.5s ease-out forwards;
+}
+
+@keyframes particle-animation {
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+        opacity: 0.9;
+    }
+    50% {
+        transform: translate(calc(var(--end-x) * 0.5), calc(var(--end-y) * 0.5)) rotate(180deg) scale(0.8);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translate(var(--end-x), var(--end-y)) rotate(360deg) scale(0.3);
+        opacity: 0;
+    }
+}
+
