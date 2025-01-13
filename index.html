@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hôm Nay Ăn Gì?</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="assets/icon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="preload" href="https://assets.mixkit.co/active_storage/sfx/2003/2003-preview.mp3" as="audio">
+    <link rel="preload" href="https://assets.mixkit.co/active_storage/sfx/1435/1435-preview.mp3" as="audio">
+</head>
+<body>
+    <div class="container">
+        <h1>Hôm Nay Ăn Gì?</h1>
+        <div class="tabs">
+            <button class="tab-button active" data-tab="dryDish">Món Khô</button>
+            <button class="tab-button" data-tab="soupDish">Món Nước</button>
+        </div>
+        <div class="tab-content">
+            <div id="dryDish" class="tab-pane active">
+                <div class="wheel-container">
+                    <div id="dryDishWheel" class="wheel">
+                        <div class="wheel-content" style="will-change: transform"></div>
+                    </div>
+                    <p id="dryDishResult" class="result" aria-live="polite"></p>
+                    <button id="spinDryButton" class="spin-button" type="button">Quay</button>
+                </div>
+            </div>
+            <div id="soupDish" class="tab-pane">
+                <div class="wheel-container">
+                    <div id="soupDishWheel" class="wheel">
+                        <div class="wheel-content" style="will-change: transform"></div>
+                    </div>
+                    <p id="soupDishResult" class="result" aria-live="polite"></p>
+                    <button id="spinSoupButton" class="spin-button" type="button">Quay</button>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            Made by KhoaDev with <span class="heart">💖</span>
+        </footer>
+    </div>
+    <script src="script.js" defer></script>
+</body>
+</html>
