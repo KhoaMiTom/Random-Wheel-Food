@@ -129,25 +129,33 @@ function shakeElement(element) {
 }
 
 function createImageParticle(x, y) {
-    const particle = document.createElement('img');
-    particle.src = 'assets/image.png';
-    particle.className = 'image-particle';
-    
-    // Random end position with larger distance
-    const angle = Math.random() * Math.PI * 2;
-    const distance = 200 + Math.random() * 300; // Increased distance
-    const endX = Math.cos(angle) * distance;
-    const endY = Math.sin(angle) * distance;
-    
-    particle.style.setProperty('--end-x', `${endX}px`);
-    particle.style.setProperty('--end-y', `${endY}px`);
-    
-    particle.style.left = `${x}px`;
-    particle.style.top = `${y}px`;
-    
-    document.body.appendChild(particle);
-    
-    setTimeout(() => particle.remove(), 2500); // Match with animation duration
+    // Create multiple particles with different paths
+    for (let i = 0; i < 3; i++) {
+        const particle = document.createElement('img');
+        particle.src = 'assets/image.png';
+        particle.className = 'image-particle';
+        
+        // Random end position with dynamic distance based on index
+        const angle = (Math.random() * Math.PI * 2) + (i * (Math.PI * 2 / 3));
+        const baseDistance = 300 + Math.random() * 200;
+        const distance = baseDistance * (1 + i * 0.2);
+        
+        const endX = Math.cos(angle) * distance;
+        const endY = Math.sin(angle) * distance;
+        
+        particle.style.setProperty('--end-x', `${endX}px`);
+        particle.style.setProperty('--end-y', `${endY}px`);
+        
+        // Add slight random offset to starting position
+        const offsetX = (Math.random() - 0.5) * 50;
+        const offsetY = (Math.random() - 0.5) * 50;
+        particle.style.left = `${x + offsetX}px`;
+        particle.style.top = `${y + offsetY}px`;
+        
+        document.body.appendChild(particle);
+        
+        setTimeout(() => particle.remove(), 3000);
+    }
 }
 
 function showResult(result, text) {
