@@ -167,10 +167,6 @@ function showResult(result, text) {
     function createNextConfetti() {
         if (created < MAX_CONFETTI) {
             createConfetti();
-            // Add image particles
-            const x = Math.random() * window.innerWidth;
-            const y = Math.random() * window.innerHeight;
-            createImageParticle(x, y);
             created++;
             requestAnimationFrame(createNextConfetti);
         }
